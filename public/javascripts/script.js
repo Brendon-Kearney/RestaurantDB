@@ -8,7 +8,7 @@ const h2Name = document.querySelector("#h2Name")
 const h2Address = document.querySelector("#h2Address")
 const h2Borough = document.querySelector("#h2Borough")
 const h2ZipCode = document.querySelector("#h2ZipCode")
-const pGrades0 = document.querySelector("#pGrades")
+const tGrades = document.querySelector("#tGrades")
 
 btnRest.onclick = ()=>{
     fetch("restaurant")
@@ -25,13 +25,20 @@ function render(data)
     h2Address.innerText = data.address.building + " " + data.address.street + ",";
     h2Borough.innerText = data.borough + ",";
     h2ZipCode.innerText = data.address.zipcode + " ";
-    //pGrades0.innerText = data.grades[0].date + " " + data.grades[0].grade + " " + data.grades[0].score;
-    data.forEach(grades =>{
+    
+    data.grades.forEach(grades =>{
+    
         let tr = document.createElement("tr")
-        let tr = document.createElement("td")
+        let td = document.createElement("td")
+        let td2 = document.createElement("td")
+        let td3 = document.createElement("td")
         td.innerText = grades.date
+        td2.innerText = grades.grade
+        td3.innerText = grades.score
         tr.appendChild(td)
-        pGrades.appendChild(tr)
+        tr.appendChild(td2)
+        tr.appendChild(td3)
+        tGrades.appendChild(tr)
     })
 
     console.log(data.address.zipcode);

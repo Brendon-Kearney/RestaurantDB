@@ -7,7 +7,6 @@ a {
   color: #00B7FF;
 }
 
-.j {
-  padding: 5px;
+table, tr, td, th {
   border: 1px solid black;
 }
