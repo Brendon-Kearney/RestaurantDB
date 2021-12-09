@@ -7,10 +7,19 @@ var mongoQueries = require('./../mongo/queries')
 // localhost:3000/restaurant
 router.get('/', async (req, res) => {
 
+    let criteria =
+  {
+
+  }
+
+  let numberOfListings = 2;
+
     console.log("RESTAURANTS", mongoQueries)    
-    let result = await mongoQueries.findListing({})
+    let result = await mongoQueries.findListings(criteria, numberOfListings)
     console.log(result)
     res.send (result)
+
+    
 });
 
 module.exports = router;

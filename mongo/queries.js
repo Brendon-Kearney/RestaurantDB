@@ -13,5 +13,20 @@ async function findListing(criteria)
   return result
 }
 
-module.exports = {findListing}  
+async function findListings(criteria, nListings)
+{
+let result = [{name: "No matches"}]
+await mongoClient.connect()
+.then(connection=>connection.db('sample_restaurants'))
+.then(db=>db.collection('restaurants'))
+.then(restaurantListings=>restaurantListings
+.find(criteria)
+.limit(nListings))
+.then(cursor=>cursor.toArray())
+.then(restaurants=> result = restaurants)
+.catch(error=>console.log(error))
+return result
+}
+
+module.exports = {findListings} 
 
