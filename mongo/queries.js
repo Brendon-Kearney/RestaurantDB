@@ -28,5 +28,5 @@ await mongoClient.connect()
 return result
 }
 
-module.exports = {findListings} 
+module.exports = {findListing, findListings} 
 
