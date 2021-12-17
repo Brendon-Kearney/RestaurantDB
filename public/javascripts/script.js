@@ -5,17 +5,41 @@ const h2Address = document.querySelector("#h2Address")
 const h2Borough = document.querySelector("#h2Borough")
 const h2ZipCode = document.querySelector("#h2ZipCode")
 const tGrades = document.querySelector("#tGrades")
+const nextBtn = document.querySelector("#nextBtn")
+const prevBtn = document.querySelector("#prevBtn")
 
-var sizeOfPage = 2;
+var pageSize = 2
+var pageNumber = 0
+
+nextBtn.onclick = () =>{
+    pageNumber += 1
+    console.log(pageSize)
+    fetch("restaurant?pageSize=" + pageSize + "&pageNumber=" + pageNumber)
+    .then(divRest.innerHTML="")
+    .then(response => response.json())
+    .then(data => render(data))
+    .catch(error=>alert(error))
+}
+
+prevBtn.onclick = () =>{
+    if(pageNumber > 0)
+    pageNumber -= 1
+    console.log(pageSize)
+    fetch("restaurant?pageSize=" + pageSize + "&pageNumber=" + pageNumber)
+    .then(divRest.innerHTML="")
+    .then(response => response.json())
+    .then(data => render(data))
+    .catch(error=>alert(error))
+}
 
 function setSize(newSize)
 {
-    sizeOfPage = newSize;
+    pageSize = newSize;
 }
 
 btnRest.onclick = ()=>{
     console.log(pageSize)
-    fetch("restaurant?pageSize=" + sizeOfPage)
+    fetch("restaurant?pageSize=" + pageSize + "&pageNumber=" + pageNumber)
     .then(divRest.innerHTML="")
     .then(response => response.json())
     .then(data => render(data))
