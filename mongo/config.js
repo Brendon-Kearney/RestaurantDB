@@ -1,8 +1,9 @@
 const { MongoClient } = require('mongodb')
 
+//mongodb+srv://mxbk:<password>@cluster0.adcor.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 const protocol = 'mongodb+srv'
-const credentials = 'comp-206:comp-206'
-const host = 'vue-express-mdb.ck6mp.mongodb.net'
+const credentials = 'mxbk:mxbk'
+const host = 'cluster0.adcor.mongodb.net'
 const options = 'retryWrites=true&w=majority'
 const url = `${protocol}://${credentials}@${host}?${options}`
 const mongoClient = new MongoClient(url)
